@@ -1,4 +1,4 @@
-# mruby-uname   [![Build Status](https://travis-ci.org/matsumoto-r/mruby-uname.png?branch=master)](https://travis-ci.org/matsumoto-r/mruby-uname)
+# mruby-uname   [![Build Status](https://travis-ci.org/matsumoto-r/mruby-uname.svg?branch=master)](https://travis-ci.org/matsumoto-r/mruby-uname)
 Uname class, system uname bindings
 ## install by mrbgems
 - add conf.gem line to `build_config.rb`
@@ -16,10 +16,17 @@ end
 $ ./bin/mirb
 mirb - Embeddable Interactive Ruby Shell
 
-> u = Uname.new
- => #<Uname:0xa47c90>
-> u.sysname
+> Uname.version
+ => "#46-Ubuntu SMP Thu Apr 10 19:11:08 UTC 2014"
+> Uname.release
+ => "3.13.0-24-generic"
+> Uname.sysname
  => "Linux"
+> Uname.nodename
+ => "ubuntu14-04-64"
+> Uname.machine
+ => "x86_64"
+>
 ```
 
 ## License
