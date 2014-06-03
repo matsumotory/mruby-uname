@@ -57,12 +57,19 @@ static mrb_value mrb_uname_sysname(mrb_state *mrb, mrb_value self)
   return mrb_str_new_cstr(mrb, data->uname_b.sysname);
 }
 
+static mrb_value mrb_uname_machine(mrb_state *mrb, mrb_value self)
+{
+  mrb_uname_data *data = mrb_uname_get_uname_data(mrb, self);
+  return mrb_str_new_cstr(mrb, data->uname_b.machine);
+}
+
 void mrb_mruby_uname_gem_init(mrb_state *mrb)
 {
     struct RClass *uname;
 
     uname = mrb_define_class(mrb, "Uname", mrb->object_class);
     mrb_define_class_method(mrb, uname, "sysname", mrb_uname_sysname, MRB_ARGS_NONE());
+    mrb_define_class_method(mrb, uname, "machine", mrb_uname_machine, MRB_ARGS_NONE());
     DONE;
 }
 
