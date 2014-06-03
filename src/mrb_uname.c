@@ -51,22 +51,22 @@ static mrb_uname_data *mrb_uname_get_uname_data(mrb_state *mrb, mrb_value self)
   return data;
 }
 
+#define MRB_UNAME_GET_VALUE(mrb, self, name) \
+  mrb_str_new_cstr(mrb, (mrb_uname_get_uname_data(mrb, self))->uname_b.name)
+
 static mrb_value mrb_uname_sysname(mrb_state *mrb, mrb_value self)
 {
-  mrb_uname_data *data = mrb_uname_get_uname_data(mrb, self);
-  return mrb_str_new_cstr(mrb, data->uname_b.sysname);
+  return MRB_UNAME_GET_VALUE(mrb, self, sysname);
 }
 
 static mrb_value mrb_uname_machine(mrb_state *mrb, mrb_value self)
 {
-  mrb_uname_data *data = mrb_uname_get_uname_data(mrb, self);
-  return mrb_str_new_cstr(mrb, data->uname_b.machine);
+  return MRB_UNAME_GET_VALUE(mrb, self, machine);
 }
 
 static mrb_value mrb_uname_nodename(mrb_state *mrb, mrb_value self)
 {
-  mrb_uname_data *data = mrb_uname_get_uname_data(mrb, self);
-  return mrb_str_new_cstr(mrb, data->uname_b.nodename);
+  return MRB_UNAME_GET_VALUE(mrb, self, nodename);
 }
 
 void mrb_mruby_uname_gem_init(mrb_state *mrb)
