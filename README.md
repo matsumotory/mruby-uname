@@ -1,5 +1,5 @@
 # mruby-uname   [![Build Status](https://travis-ci.org/matsumoto-r/mruby-uname.png?branch=master)](https://travis-ci.org/matsumoto-r/mruby-uname)
-Uname class
+Uname class, system uname bindings
 ## install by mrbgems
 - add conf.gem line to `build_config.rb`
 
