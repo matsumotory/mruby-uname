@@ -69,6 +69,11 @@ static mrb_value mrb_uname_nodename(mrb_state *mrb, mrb_value self)
   return MRB_UNAME_GET_VALUE(mrb, self, nodename);
 }
 
+static mrb_value mrb_uname_release(mrb_state *mrb, mrb_value self)
+{
+  return MRB_UNAME_GET_VALUE(mrb, self, release);
+}
+
 void mrb_mruby_uname_gem_init(mrb_state *mrb)
 {
     struct RClass *uname;
@@ -77,6 +82,7 @@ void mrb_mruby_uname_gem_init(mrb_state *mrb)
     mrb_define_class_method(mrb, uname, "sysname", mrb_uname_sysname, MRB_ARGS_NONE());
     mrb_define_class_method(mrb, uname, "machine", mrb_uname_machine, MRB_ARGS_NONE());
     mrb_define_class_method(mrb, uname, "nodename", mrb_uname_nodename, MRB_ARGS_NONE());
+    mrb_define_class_method(mrb, uname, "release", mrb_uname_release, MRB_ARGS_NONE());
     DONE;
 }
 
