@@ -3,6 +3,5 @@
 ##
 
 assert("Uname#sysname") do
-  uname = Uname.new
-  assert_equal(false, uname.sysname.nil?)
+  assert_equal(false, Uname.sysname.nil?)
 end
