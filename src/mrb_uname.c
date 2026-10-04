@@ -84,6 +84,11 @@ void mrb_mruby_uname_gem_init(mrb_state *mrb)
     struct RClass *uname;
 
     uname = mrb_define_class(mrb, "Uname", mrb->object_class);
+    /* The result of uname(2) is kept in a data object whose class is Uname
+     * (mrb_uname_wrap). mruby 4.0 allocates a data object only for a class
+     * whose instances are declared as data objects; without this, every
+     * method raised "TypeError: allocation failure of Uname". */
+    MRB_SET_INSTANCE_TT(uname, MRB_TT_DATA);
     mrb_define_class_method(mrb, uname, "sysname", mrb_uname_sysname, MRB_ARGS_NONE());
     mrb_define_class_method(mrb, uname, "machine", mrb_uname_machine, MRB_ARGS_NONE());
     mrb_define_class_method(mrb, uname, "nodename", mrb_uname_nodename, MRB_ARGS_NONE());
